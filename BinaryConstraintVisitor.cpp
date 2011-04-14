@@ -13,13 +13,13 @@
 */
 
 // Internal Includes
-#include "BinaryConstraintVisitor.h"
+#include "RecognizeConstraints.h"
 
 // Library/third-party includes
-#include <boost/variant/apply_visitor.hpp>
+// - none
 
 // Standard includes
-// - none
+#include <iostream>
 
 using namespace boundary_features;
 
@@ -36,14 +36,8 @@ int main() {
 	b.insert(plane);
 	b.insert(cylinder);
 
-	BoundaryFeature c(circle);
-	BinaryConstraintVisitor visitor;
-	for (FeatureSet::iterator itA = a.begin(); itA != a.end(); ++itA) {
-		for (FeatureSet::iterator itB = b.begin(); itB != b.end(); ++itB) {
-			boost::apply_visitor(visitor, *itA, *itB);
-		}
-	}
-	std::cout << "Found a total of " << visitor.constraints << " constraints" << std::endl;
+	int constraints = recognizeConstraints(a, b);
+	std::cout << "Found a total of " << constraints << " constraints" << std::endl;
 
 	return 0;
 }

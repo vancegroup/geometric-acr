@@ -9,10 +9,14 @@ set(SOURCES
 	BoundaryFeatures.h
 	Circle.cpp
 	Circle.h
+	Constraint.cpp
+	Constraint.h
 	Cylinder.cpp
 	Cylinder.h
 	Plane.cpp
-	Plane.h)
+	Plane.h
+	RecognizeConstraints.cpp
+	RecognizeConstraints.h)
 
 #add_library(sparta-bfeat STATIC ${SOURCES})
 add_executable(sparta-bfeat ${SOURCES})
