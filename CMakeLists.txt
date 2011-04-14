@@ -5,7 +5,7 @@
 set(SOURCES
 	testapp.cpp
 	BinaryConstraintVisitor.h
-	BoundaryFeatures.cpp
+	BoundaryFeatures_fwd.h
 	BoundaryFeatures.h
 	Circle.cpp
 	Circle.h

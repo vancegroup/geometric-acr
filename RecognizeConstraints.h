@@ -16,7 +16,7 @@
 #define INCLUDED_RecognizeConstraints_h_GUID_da56693d_7825_4cfb_9719_7cb1df90d101
 
 // Internal Includes
-#include "BoundaryFeatures.h"
+#include "BoundaryFeatures_fwd.h"
 
 // Library/third-party includes
 // - none

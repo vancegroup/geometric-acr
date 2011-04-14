@@ -14,6 +14,7 @@
 
 // Internal Includes
 #include "RecognizeConstraints.h"
+#include "BoundaryFeatures.h"
 #include "BinaryConstraintVisitor.h"
 
 // Library/third-party includes
