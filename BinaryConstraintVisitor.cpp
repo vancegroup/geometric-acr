@@ -27,15 +27,23 @@ int main() {
 	Circle circle;
 	Cylinder cylinder;
 	Plane plane;
-	FeatureSet s;
-	s.insert(cylinder);
-	s.insert(plane);
-	
+
+	FeatureSet a;
+	a.insert(circle);
+	a.insert(plane);
+
+	FeatureSet b;
+	b.insert(plane);
+	b.insert(cylinder);
+
 	BoundaryFeature c(circle);
 	BinaryConstraintVisitor visitor;
-	for (FeatureSet::iterator it = s.begin(); it != s.end(); ++it) {
-		boost::apply_visitor(visitor, c, *it);
+	for (FeatureSet::iterator itA = a.begin(); itA != a.end(); ++itA) {
+		for (FeatureSet::iterator itB = b.begin(); itB != b.end(); ++itB) {
+			boost::apply_visitor(visitor, *itA, *itB);
+		}
 	}
-		
+	std::cout << "Found a total of " << visitor.constraints << " constraints" << std::endl;
+
 	return 0;
 }
