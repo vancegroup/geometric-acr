@@ -54,6 +54,13 @@ namespace boundary_features {
 		visitor.constraints++;
 		return true;
 	}
+
+
+	template<>
+	bool accumulateConstraint<Cylinder, Circle>(BinaryConstraintVisitor & visitor, const Cylinder& lhs, const Circle& rhs) {
+		std::cout << "Got a reverse-order concentric constraint! (cylinder, circle)" << std::endl << std::endl;
+		visitor.constraints++;
+		return true;
 	}
 
 } // end of namespace boundary_features
