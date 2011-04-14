@@ -38,10 +38,10 @@ namespace boundary_features {
 		Eigen::Vector3d point;
 		Eigen::Vector3d normal;
 	};
-	
+
 	inline bool operator<(Plane const& lhs, Plane const& rhs) {
 		return lhs.point.squaredNorm() < rhs.point.squaredNorm() ? true :
-			lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
+		       lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
 	}
 } // end of namespace boundary_features
 

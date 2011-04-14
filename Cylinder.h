@@ -40,11 +40,11 @@ namespace boundary_features {
 		Eigen::Vector3d normal;
 		double radius;
 	};
-	
+
 	inline bool operator<(Cylinder const& lhs, Cylinder const& rhs) {
 		return lhs.radius < rhs.radius ? true :
-			lhs.center.squaredNorm() < rhs.center.squaredNorm() ? true :
-			lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
+		       lhs.center.squaredNorm() < rhs.center.squaredNorm() ? true :
+		       lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
 	}
 } // end of namespace boundary_features
 

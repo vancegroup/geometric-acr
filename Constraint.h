@@ -29,7 +29,7 @@ namespace boundary_features {
 		public:
 			virtual ~Constraint() = 0;
 	};
-	
+
 	inline Constraint::~Constraint() {}
 
 } // end of namespace boundary_features
