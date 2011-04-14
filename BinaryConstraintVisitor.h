@@ -27,15 +27,36 @@
 namespace boundary_features {
 	class BinaryConstraintVisitor;
 
+	/** @brief Evaluate any two boundary feature types, returning true and
+		update the constraint visitor iff the collision of the two features
+		imply a constraint.
+
+		A default, templated implementation exists as a fallback to indicate
+		"no constraint" for pairs which do not result in a recognized constraint.
+
+		To recognize new constraints, provide a function template specialization
+		of this function that returns "true" and updates the visitor accordingly.
+
+		@note Remember that feature types may be presented in either order -
+		implementing accumulateConstraint<A, B>() doesn't automatically create
+		accumulateConstraint<A, B>()
+	*/
 	template<typename T, typename U>
 	bool accumulateConstraint(BinaryConstraintVisitor & /*visitor*/, const T& lhs, const U& rhs) {
 		std::cout << "No constraint!" << std::endl << std::endl;
 		return false;
 	}
 
+	/// Binary static visitor for accumulating constraints generated between
+	/// one or more pairs of constraints, using boost::apply_visitor.
+	/// Invokes accumulateConstraint() with the types of features.
 	class BinaryConstraintVisitor : public boost::static_visitor<> {
 		public:
+			/// Default constructor
 			BinaryConstraintVisitor() : constraints(0) {}
+
+			/// Templated function-call operator for static_visitor compatibility,
+			/// calling accumulateConstraint() with the same template parameters.
 			template<typename T, typename U>
 			void operator()(const T& lhs, const U& rhs) {
 				std::cout << "Left: name=" << lhs.name << std::endl;
@@ -44,17 +65,19 @@ namespace boundary_features {
 				accumulateConstraint(*this, lhs, rhs);
 			}
 
+			/// The number of constraints recognized: updated by specializations
+			/// of accumulateConstraint()
 			int constraints;
 
 	};
 
+	//--  Specializations of accumulateConstraint() Follow --//
 	template<>
 	bool accumulateConstraint<Circle, Cylinder>(BinaryConstraintVisitor & visitor, const Circle& lhs, const Cylinder& rhs) {
 		std::cout << "Got a concentric constraint! (circle, cylinder)" << std::endl << std::endl;
 		visitor.constraints++;
 		return true;
 	}
-
 
 	template<>
 	bool accumulateConstraint<Cylinder, Circle>(BinaryConstraintVisitor & visitor, const Cylinder& lhs, const Circle& rhs) {
