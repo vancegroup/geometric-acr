@@ -3,7 +3,7 @@
 # Iowa State University HCI Graduate Program/VRAC
 
 set(SOURCES
-	BinaryConstraintVisitor.cpp
+	testapp.cpp
 	BinaryConstraintVisitor.h
 	BoundaryFeatures.cpp
 	BoundaryFeatures.h
