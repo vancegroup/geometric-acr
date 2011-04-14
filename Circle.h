@@ -27,9 +27,13 @@
 namespace boundary_features {
 	struct Circle {
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-		
-		Circle() : name("Circle") {}
-		
+
+		Circle() :
+			name("Circle"),
+			center(Eigen::Vector3d::Zero()),
+			normal(Eigen::Vector3d::UnitX()),
+			radius(0.0) {}
+
 		const char * name;
 		Eigen::Vector3d center;
 		Eigen::Vector3d normal;

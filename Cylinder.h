@@ -27,9 +27,13 @@
 namespace boundary_features {
 	struct Cylinder {
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-		
-		Cylinder() : name("Cylinder") {}
-		
+
+		Cylinder() :
+			name("Cylinder"),
+			center(Eigen::Vector3d::Zero()),
+			normal(Eigen::Vector3d::UnitX()),
+			radius(0.0) {}
+
 		const char * name;
 
 		Eigen::Vector3d center;

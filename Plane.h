@@ -27,9 +27,12 @@
 namespace boundary_features {
 	struct Plane {
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-		
-		Plane() : name("Plane") {}
-		
+
+		Plane() :
+			name("Plane"),
+			point(Eigen::Vector3d::Zero()),
+			normal(Eigen::Vector3d::UnitX()) {}
+
 		const char * name;
 
 		Eigen::Vector3d point;
