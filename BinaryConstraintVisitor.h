@@ -25,22 +25,23 @@
 #include <iostream>
 
 namespace boundary_features {
-	class Constraint;
 	class BinaryConstraintVisitor;
+
 	template<typename T, typename U>
-	Constraint * recognizeConstraint(BinaryConstraintVisitor & /*visitor*/, const T& lhs, const U& rhs) {
+	bool accumulateConstraint(BinaryConstraintVisitor & /*visitor*/, const T& lhs, const U& rhs) {
 		std::cout << "No constraint!" << std::endl << std::endl;
-		return NULL;
+		return false;
 	}
-	class BinaryConstraintVisitor : public boost::static_visitor<Constraint *> {
+
+	class BinaryConstraintVisitor : public boost::static_visitor<> {
 		public:
 			BinaryConstraintVisitor() : constraints(0) {}
 			template<typename T, typename U>
-			Constraint * operator()(const T& lhs, const U& rhs) {
+			void operator()(const T& lhs, const U& rhs) {
 				std::cout << "Left: name=" << lhs.name << std::endl;
 				std::cout << "Right: name=" << rhs.name << std::endl;
 
-				return recognizeConstraint(*this, lhs, rhs);
+				accumulateConstraint(*this, lhs, rhs);
 			}
 
 			int constraints;
@@ -48,10 +49,11 @@ namespace boundary_features {
 	};
 
 	template<>
-	Constraint * recognizeConstraint<Circle, Cylinder>(BinaryConstraintVisitor & visitor, const Circle& lhs, const Cylinder& rhs) {
+	bool accumulateConstraint<Circle, Cylinder>(BinaryConstraintVisitor & visitor, const Circle& lhs, const Cylinder& rhs) {
 		std::cout << "Got a concentric constraint! (circle, cylinder)" << std::endl << std::endl;
 		visitor.constraints++;
-		return NULL;
+		return true;
+	}
 	}
 
 } // end of namespace boundary_features
