@@ -1,6 +1,11 @@
 /**
 	@file RecognizeConstraints.cpp
-	@brief
+	@brief Implementation of constraint recognition wrapper function.
+
+	The actual work is done in BinaryConstraintVisitor.h - the function in
+	this file mostly exists to keep that header internal and present a nicer
+	API: two feature sets go in, results come out, and how it happens doesn't
+	matter.
 
 	@date 2011
 
@@ -15,7 +20,7 @@
 // Internal Includes
 #include "RecognizeConstraints.h"
 #include "BoundaryFeatures.h"
-#include "BinaryConstraintVisitor.h"
+#include "detail/BinaryConstraintVisitor.h"
 
 // Library/third-party includes
 #include <boost/variant/apply_visitor.hpp>
@@ -25,7 +30,7 @@
 
 namespace boundary_features {
 	int recognizeConstraints(FeatureSet const & a, FeatureSet const& b) {
-		BinaryConstraintVisitor visitor;
+		detail::BinaryConstraintVisitor visitor;
 		for (FeatureSet::const_iterator itA = a.begin(); itA != a.end(); ++itA) {
 			for (FeatureSet::const_iterator itB = b.begin(); itB != b.end(); ++itB) {
 				boost::apply_visitor(visitor, *itA, *itB);

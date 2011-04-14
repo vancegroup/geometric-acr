@@ -4,22 +4,26 @@
 
 set(SOURCES
 	testapp.cpp
-	BinaryConstraintVisitor.h
+	Circle.cpp
+	Constraint.cpp
+	Cylinder.cpp
+	Plane.cpp
+	RecognizeConstraints.cpp)
+
+set(HEADERS
 	BoundaryFeatures_fwd.h
 	BoundaryFeatures.h
-	Circle.cpp
 	Circle.h
-	Constraint.cpp
 	Constraint.h
-	Cylinder.cpp
 	Cylinder.h
-	Plane.cpp
 	Plane.h
-	RecognizeConstraints.cpp
 	RecognizeConstraints.h)
 
-#add_library(sparta-bfeat STATIC ${SOURCES})
-add_executable(sparta-bfeat ${SOURCES})
+set(DETAIL_HEADERS
+	detail/BinaryConstraintVisitor.h)
+
+#add_library(sparta-bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
+add_executable(sparta-bfeat ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
 
 add_cppcheck(sparta-bfeat STYLE FAIL_ON_WARNING)
 
