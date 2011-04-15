@@ -20,7 +20,13 @@ set(HEADERS
 	RecognizeConstraints.h)
 
 set(DETAIL_HEADERS
-	detail/BinaryConstraintVisitor.h)
+	detail/RecognizedPairs/CircleCylinder.h
+
+	detail/accumulateConstraint.h
+	detail/BinaryConstraintVisitor.h
+	detail/ConstraintFromFeaturePair.h
+	detail/ConstraintFromFeaturePair_fwd.h
+	detail/IsRecognized.h)
 
 #add_library(sparta-bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
 add_executable(sparta-bfeat ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
