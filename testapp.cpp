@@ -32,10 +32,12 @@ int main() {
 	FeatureSet a;
 	a.insert(circle);
 	a.insert(plane);
+	a.insert(cylinder);
 
 	FeatureSet b;
 	b.insert(plane);
 	b.insert(cylinder);
+	b.insert(circle);
 
 	int constraints = recognizeConstraints(a, b);
 	std::cout << "Found a total of " << constraints << " constraints" << std::endl;
