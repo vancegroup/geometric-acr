@@ -33,6 +33,28 @@ namespace boundary_features {
 	namespace detail {
 		class BinaryConstraintVisitor;
 
+		struct UnrecognizedFeaturePair {
+			typedef void unrecognized_tag;
+		};
+
+		template<typename T, typename U>
+		struct ConstraintFromFeaturePair : UnrecognizedFeaturePair {};
+
+		template<typename T, typename U, typename Enable = void>
+		struct IsRecognized {
+			typedef void type;
+		};
+
+		template<typename T, typename U>
+		struct IsRecognized<T, U, typename ConstraintFromFeaturePair<T, U>::unrecognized_tag> {};
+
+		template<typename T, typename U, typename Enable = void>
+		struct NotRecognized {};
+
+		template<typename T, typename U>
+		struct NotRecognized<T, U, typename ConstraintFromFeaturePair<T, U>::unrecognized_tag> {
+			typedef void type;
+		};
 		/** @brief Evaluate any two boundary feature types, returning true and
 			update the constraint visitor iff the collision of the two features
 			imply a constraint.
@@ -48,9 +70,37 @@ namespace boundary_features {
 			accumulateConstraint<A, B>()
 		*/
 		template<typename T, typename U>
-		bool accumulateConstraint(BinaryConstraintVisitor & /*visitor*/, const T& lhs, const U& rhs) {
-			std::cout << "No constraint!" << std::endl << std::endl;
+		bool accumulateConstraint(BinaryConstraintVisitor & /*visitor*/,
+		                          const T& /*lhs*/,
+		                          const U& /*rhs*/,
+		                          typename NotRecognized<T, U>::type* = 0,
+		                          typename NotRecognized<U, T>::type* = 0) {
 			return false;
+		}
+
+		template<typename T, typename U>
+		bool accumulateConstraint(BinaryConstraintVisitor & visitor,
+		                          const T& lhs,
+		                          const U& rhs,
+		                          typename IsRecognized<T, U>::type* = 0,
+		                          typename NotRecognized<U, T>::type* = 0) {
+			return ConstraintFromFeaturePair<T, U>::accumulateConstraint(lhs, rhs, false);
+		}
+		template<typename T, typename U>
+		bool accumulateConstraint(BinaryConstraintVisitor & visitor,
+		                          const T& lhs,
+		                          const U& rhs,
+		                          typename NotRecognized<T, U>::type* = 0,
+		                          typename IsRecognized<U, T>::type* = 0) {
+			return ConstraintFromFeaturePair<U, T>::accumulateConstraint(rhs, lhs, true);
+		}
+
+		template<typename T>
+		bool accumulateConstraint(BinaryConstraintVisitor & visitor,
+		                          const T& lhs,
+		                          const T& rhs,
+		                          typename IsRecognized<T, T>::type* = 0) {
+			return ConstraintFromFeaturePair<T, T>::accumulateConstraint(lhs, rhs, false);
 		}
 
 		/// Binary static visitor for accumulating constraints generated between
@@ -59,17 +109,23 @@ namespace boundary_features {
 		class BinaryConstraintVisitor : public boost::static_visitor<> {
 			public:
 				/// Default constructor
-				BinaryConstraintVisitor() : constraints(0) {}
+				BinaryConstraintVisitor() : pairs(0), constraints(0) {}
 
 				/// Templated function-call operator for static_visitor compatibility,
 				/// calling accumulateConstraint() with the same template parameters.
 				template<typename T, typename U>
 				void operator()(const T& lhs, const U& rhs) {
-					std::cout << "Left: name=" << lhs.name << std::endl;
-					std::cout << "Right: name=" << rhs.name << std::endl;
+					pairs++;
+					std::cout << "(" << lhs.name << ", " << rhs.name << ")" << std::endl;
 
-					accumulateConstraint(*this, lhs, rhs);
+					const bool ret = accumulateConstraint(*this, lhs, rhs);
+					if (ret) {
+						constraints++;
+					}
 				}
+
+				/// Pairs evaluated
+				int pairs;
 
 				/// The number of constraints recognized: updated by specializations
 				/// of accumulateConstraint()
@@ -79,18 +135,13 @@ namespace boundary_features {
 
 		//--  Specializations of accumulateConstraint() Follow --//
 		template<>
-		bool accumulateConstraint<Circle, Cylinder>(BinaryConstraintVisitor & visitor, const Circle& lhs, const Cylinder& rhs) {
-			std::cout << "Got a concentric constraint! (circle, cylinder)" << std::endl << std::endl;
-			visitor.constraints++;
-			return true;
-		}
-
-		template<>
-		bool accumulateConstraint<Cylinder, Circle>(BinaryConstraintVisitor & visitor, const Cylinder& lhs, const Circle& rhs) {
-			std::cout << "Got a reverse-order concentric constraint! (cylinder, circle)" << std::endl << std::endl;
-			visitor.constraints++;
-			return true;
-		}
+		struct ConstraintFromFeaturePair<Circle, Cylinder> {
+			public:
+				static bool accumulateConstraint(const Circle& lhs, const Cylinder& rhs, bool reverse) {
+					std::cout << "Got a concentric constraint! (circle, cylinder) reverse = " << std::boolalpha << reverse << std::endl << std::endl;
+					return true;
+				}
+		};
 	} // end of namespace detail
 } // end of namespace boundary_features
 
