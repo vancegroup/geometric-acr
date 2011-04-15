@@ -1,7 +1,6 @@
 /** @file ConstraintFromFeaturePair.h
 	@brief ConstraintFromFeaturePair template default implementation, which
-	signals that a particular feature pair is not recognized. Specializations
-	in other files override this typedef-based signalling.
+	signals that a particular feature pair is not recognized.
 
 	@date 2011
 

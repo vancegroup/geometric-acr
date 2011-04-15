@@ -1,5 +1,5 @@
 /** @file RecognizeConstraints.h
-	@brief
+	@brief Header for main constraint recognition function
 
 	@date 2011
 
@@ -26,6 +26,15 @@
 
 
 namespace boundary_features {
+	/** @brief The main constraint recognition function, returning constraints
+		recognized based on all pairings between features in the given feature
+		sets.
+
+		To indicate that a feature pair should be recognized as leading to a constraint,
+		create a template specialization of detail::ConstraintFromFeaturePair in a new header
+		in detail/RecognizedPairs (see CircleCylinder.h for an example), and then include
+		the new pair's header in RecognizeConstraints.cpp.
+	*/
 	int recognizeConstraints(FeatureSet const & a, FeatureSet const& b);
 } // end of namespace boundary_features
 
