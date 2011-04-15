@@ -1,5 +1,5 @@
-/** @file ConstraintFromFeaturePair.h
-	@brief
+/** @file ConstraintFromFeaturePair_fwd.h
+	@brief Forward declaration of ConstraintFromFeaturePair template.
 
 	@date 2011
 
@@ -12,8 +12,8 @@
 */
 
 #pragma once
-#ifndef INCLUDED_ConstraintFromFeaturePair_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6
-#define INCLUDED_ConstraintFromFeaturePair_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6
+#ifndef INCLUDED_ConstraintFromFeaturePair_fwd_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6
+#define INCLUDED_ConstraintFromFeaturePair_fwd_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6
 
 // Internal Includes
 // - none
@@ -33,4 +33,4 @@ namespace boundary_features {
 	} // end of namespace detail
 } // end of namespace boundary_features
 
-#endif // INCLUDED_ConstraintFromFeaturePair_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6
+#endif // INCLUDED_ConstraintFromFeaturePair_fwd_h_GUID_4b901238_92a8_43f6_b831_2cd5ba7278e6

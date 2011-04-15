@@ -1,5 +1,6 @@
 /** @file IsRecognized.h
-	@brief
+	@brief Templates to provide IsRecognized<T, U> and NotRecognized<T, U>
+	for SFINAE-based selection of overloads in accumulateConstraint.h
 
 	@date 2011
 

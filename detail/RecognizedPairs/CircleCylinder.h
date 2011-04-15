@@ -17,6 +17,8 @@
 
 // Internal Includes
 #include "../ConstraintFromFeaturePair_fwd.h"
+#include "../../Circle.h"
+#include "../../Cylinder.h"
 
 // Library/third-party includes
 // - none

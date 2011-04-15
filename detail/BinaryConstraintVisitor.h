@@ -1,7 +1,7 @@
 /** @file BinaryConstraintVisitor.h
 	@brief The core of automatic constraint recognition - contains a binary
-	visitor for the boost::variant-based BoundaryFeature type, and function
-	template specializations for each feature pair that indicates a constraint.
+	visitor for the boost::variant-based BoundaryFeature type, which dispatches
+	to the overloaded accumulateConstraint() function.
 
 	Used within RecognizeConstraints.cpp - should not need to be included
 	by "user" code.
@@ -21,10 +21,7 @@
 #define INCLUDED_BinaryConstraintVisitor_h_GUID_bebf5397_c20c_47c2_b4c1_5c1cd29e06fd
 
 // Internal Includes
-#include "../BoundaryFeatures.h"
 #include "accumulateConstraint.h"
-
-#include "RecognizedPairs/CircleCylinder.h"
 
 // Library/third-party includes
 #include <boost/variant/static_visitor.hpp>

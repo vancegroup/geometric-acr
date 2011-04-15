@@ -1,11 +1,16 @@
 /**
 	@file RecognizeConstraints.cpp
-	@brief Implementation of constraint recognition wrapper function.
+	@brief Implementation of constraint recognition function.
 
-	The actual work is done in BinaryConstraintVisitor.h - the function in
-	this file mostly exists to keep that header internal and present a nicer
-	API: two feature sets go in, results come out, and how it happens doesn't
-	matter.
+	All RecognizedPairs (specializations of ConstraintFromFeaturePair) _must_
+	be included in this file, since this is where the template-based constraint
+	recognition system is instantiated. If it isn't included in this file, it
+	doesn't get seen or used.
+
+	The actual work is done in BinaryConstraintVisitor.h and related files -
+	the function in	this file mostly exists to keep that header internal and
+	present a nicer	API: two feature sets go in, results come out, and how it
+	happens doesn't matter.
 
 	@date 2011
 
@@ -21,6 +26,8 @@
 #include "RecognizeConstraints.h"
 #include "BoundaryFeatures.h"
 #include "detail/BinaryConstraintVisitor.h"
+
+#include "detail/RecognizedPairs/CircleCylinder.h"
 
 // Library/third-party includes
 #include <boost/variant/apply_visitor.hpp>
