@@ -26,6 +26,18 @@
 
 
 namespace boundary_features {
+	struct RecognizedConstraints {
+
+		/// Pairs evaluated
+		int pairsChecked;
+
+		/// Constraints recognized
+		int constraintsRecognized;
+
+		RecognizedConstraints() : pairsChecked(0), constraintsRecognized(0) {}
+	};
+
+
 	/** @brief The main constraint recognition function, returning constraints
 		recognized based on all pairings between features in the given feature
 		sets.
@@ -35,10 +47,6 @@ namespace boundary_features {
 		in detail/RecognizedPairs (see CircleCylinder.h for an example), and then include
 		the new pair's header in RecognizeConstraints.cpp.
 	*/
-	struct RecognizedConstraints {
-		int pairsChecked;
-		int constraintsRecognized;
-	};
 	RecognizedConstraints recognizeConstraints(FeatureSet const & a, FeatureSet const& b);
 } // end of namespace boundary_features
 

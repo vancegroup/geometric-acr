@@ -43,9 +43,6 @@ namespace boundary_features {
 				boost::apply_visitor(visitor, *itA, *itB);
 			}
 		}
-		RecognizedConstraints c;
-		c.constraintsRecognized = visitor.constraints;
-		c.pairsChecked = visitor.pairs;
-		return c;
+		return visitor.c;
 	}
 } // end of namespace boundary_features

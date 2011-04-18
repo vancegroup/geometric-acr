@@ -22,6 +22,7 @@
 
 // Internal Includes
 #include "accumulateConstraint.h"
+#include "../RecognizeConstraints.h"
 
 // Library/third-party includes
 #include <boost/variant/static_visitor.hpp>
@@ -38,26 +39,21 @@ namespace boundary_features {
 		class BinaryConstraintVisitor : public boost::static_visitor<> {
 			public:
 				/// Default constructor
-				BinaryConstraintVisitor() : pairs(0), constraints(0) {}
+				BinaryConstraintVisitor() {}
 
 				/// Templated function-call operator for static_visitor compatibility,
 				/// calling accumulateConstraint() with the same template parameters.
 				template<typename T, typename U>
 				void operator()(const T& lhs, const U& rhs) {
-					pairs++;
+					c.pairsChecked++;
 
 					const bool ret = accumulateConstraint(lhs, rhs);
 					if (ret) {
-						constraints++;
+						c.constraintsRecognized++;
 					}
 				}
 
-				/// Pairs evaluated
-				int pairs;
-
-				/// The number of constraints recognized: updated by specializations
-				/// of accumulateConstraint()
-				int constraints;
+				RecognizedConstraints c;
 
 		};
 	} // end of namespace detail
