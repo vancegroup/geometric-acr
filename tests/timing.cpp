@@ -21,14 +21,8 @@
 
 // Standard includes
 #include <iostream>
-#include <cstdlib>
 
 using namespace boundary_features;
-
-inline bool flipCoin() {
-	//return std::rand() % 2;
-	return true;
-}
 
 double timeRecognition(FeatureSet const& a, FeatureSet const& b, int iterations) {
 	boost::timer t;
@@ -46,38 +40,18 @@ int main() {
 	Sphere sphere;
 
 	FeatureSet a;
-	if (flipCoin()) {
-		a.insert(circle);
-	}
-	if (flipCoin()) {
-		a.insert(cone);
-	}
-	if (flipCoin()) {
-		a.insert(cylinder);
-	}
-	if (flipCoin()) {
-		a.insert(plane);
-	}
-	if (flipCoin()) {
-		a.insert(sphere);
-	}
+	a.insert(circle);
+	a.insert(cone);
+	a.insert(cylinder);
+	a.insert(plane);
+	a.insert(sphere);
 
 	FeatureSet b;
-	if (flipCoin()) {
-		b.insert(circle);
-	}
-	if (flipCoin()) {
-		b.insert(cone);
-	}
-	if (flipCoin()) {
-		b.insert(cylinder);
-	}
-	if (flipCoin()) {
-		b.insert(plane);
-	}
-	if (flipCoin()) {
-		b.insert(sphere);
-	}
+	b.insert(circle);
+	b.insert(cone);
+	b.insert(cylinder);
+	b.insert(plane);
+	b.insert(sphere);
 
 	RecognizedConstraints c = recognizeConstraints(a, b);
 	std::cout << "Checking " << c.pairsChecked << " pairs to find " << c.constraintsRecognized << " constraints" << std::endl;
