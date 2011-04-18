@@ -4,19 +4,23 @@
 
 set(SOURCES
 	Circle.cpp
+	Cone.cpp
 	Constraint.cpp
 	Cylinder.cpp
 	Plane.cpp
-	RecognizeConstraints.cpp)
+	RecognizeConstraints.cpp
+	Sphere.cpp)
 
 set(HEADERS
 	BoundaryFeatures_fwd.h
 	BoundaryFeatures.h
 	Circle.h
+	Cone.h
 	Constraint.h
 	Cylinder.h
 	Plane.h
-	RecognizeConstraints.h)
+	RecognizeConstraints.h
+	Sphere.h)
 
 set(DETAIL_HEADERS
 	detail/RecognizedPairs/CircleCylinder.h
