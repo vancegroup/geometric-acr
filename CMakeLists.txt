@@ -3,7 +3,6 @@
 # Iowa State University HCI Graduate Program/VRAC
 
 set(SOURCES
-	testapp.cpp
 	Circle.cpp
 	Constraint.cpp
 	Cylinder.cpp
@@ -28,8 +27,13 @@ set(DETAIL_HEADERS
 	detail/ConstraintFromFeaturePair_fwd.h
 	detail/IsRecognized.h)
 
-#add_library(sparta-bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
-add_executable(sparta-bfeat ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
+add_library(sparta-bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
 
 add_cppcheck(sparta-bfeat STYLE FAIL_ON_WARNING)
 
+if(BUILD_TESTING)
+	add_executable(sparta-bfeat-testapp testapp.cpp)
+	target_link_libraries(sparta-bfeat-testapp sparta-bfeat)
+
+	add_subdirectory(tests)
+endif()
