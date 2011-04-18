@@ -24,6 +24,11 @@ set(HEADERS
 
 set(DETAIL_HEADERS
 	detail/RecognizedPairs/CircleCylinder.h
+	detail/RecognizedPairs/ConeCone.h
+	detail/RecognizedPairs/CylinderCylinder.h
+	detail/RecognizedPairs/PlanePlane.h
+	detail/RecognizedPairs/SphereCylinder.h
+	detail/RecognizedPairs/SphereSphere.h
 
 	detail/accumulateConstraint.h
 	detail/BinaryConstraintVisitor.h
