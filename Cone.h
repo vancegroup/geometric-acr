@@ -32,14 +32,14 @@ namespace boundary_features {
 			name("Cone"),
 			center(Eigen::Vector3d::Zero()),
 			axis(Eigen::Vector3d::UnitX()),
-			reference(Eigen::Vector3d::UnitX()),
+			ref(Eigen::Vector3d::UnitX()),
 			halfangle(0.0),
 			radius(0.0) {}
 
 		std::string name;
 		Eigen::Vector3d center;
 		Eigen::Vector3d axis;
-		Eigen::Vector3d reference;
+		Eigen::Vector3d ref;
 		double halfangle;
 		double radius;
 	};
@@ -49,7 +49,7 @@ namespace boundary_features {
 		       lhs.halfangle < rhs.halfangle ? true :
 		       lhs.center.squaredNorm() < rhs.center.squaredNorm() ? true :
 		       lhs.axis.squaredNorm() < rhs.axis.squaredNorm() ? true :
-		       lhs.reference.squaredNorm() < rhs.reference.squaredNorm();
+		       lhs.ref.squaredNorm() < rhs.ref.squaredNorm();
 	}
 } // end of namespace boundary_features
 
