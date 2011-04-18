@@ -44,27 +44,27 @@ int main() {
 	Plane plane;
 
 	FeatureSet a;
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		a.insert(circle);
 	}
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		a.insert(cylinder);
 	}
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		a.insert(plane);
 	}
 
 	FeatureSet b;
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		b.insert(circle);
 	}
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		b.insert(cylinder);
 	}
-	if (flipCoin()) {	
+	if (flipCoin()) {
 		b.insert(plane);
 	}
-	
+
 	const double GOAL_TIME = 3;
 	int iterations = 1000000;
 	double perOp;

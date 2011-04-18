@@ -1,4 +1,4 @@
-/** 
+/**
 	@author
 	Ryan Pavlik ( <rpavlik@iastate.edu> http://academic.cleardefinition.com/ ),
 	Iowa State University
