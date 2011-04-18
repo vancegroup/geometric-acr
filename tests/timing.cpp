@@ -26,7 +26,8 @@
 using namespace boundary_features;
 
 inline bool flipCoin() {
-	return std::rand() % 2;
+	//return std::rand() % 2;
+	return true;
 }
 
 double timeRecognition(FeatureSet const& a, FeatureSet const& b, int iterations) {
@@ -65,16 +66,18 @@ int main() {
 	}
 	
 	const double GOAL_TIME = 3;
-	int iterations = 100;
+	int iterations = 1000000;
 	double perOp;
 	for (int trial = 0; trial < 5; ++trial) {
-		std::cout << "Trying " << iterations << " iterations" << std::endl;
+		std::cout << std::endl << "Trying " << iterations << " iterations" << std::endl;
 		double elapsed = timeRecognition(a, b, iterations);
-		perOp = (elapsed / iterations);
+		perOp = elapsed / static_cast<double>(iterations);
+		std::cout << "elapsed: " << elapsed << std::endl;
 		iterations = GOAL_TIME / perOp;
 	}
+	std::cout << std::endl;
 	std::cout << "Time per operation: " << perOp << std::endl;
 	std::cout << "Operations per second: " << 1.0 / perOp << std::endl;
-
+	std::cout << "Operations per millisecond: " << 0.001 / perOp << std::endl;
 	return 0;
 }
