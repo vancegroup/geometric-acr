@@ -27,7 +27,7 @@
 #include <boost/variant/static_visitor.hpp>
 
 // Standard includes
-#include <iostream>
+// - none
 
 namespace boundary_features {
 	namespace detail {
@@ -45,7 +45,6 @@ namespace boundary_features {
 				template<typename T, typename U>
 				void operator()(const T& lhs, const U& rhs) {
 					pairs++;
-					std::cout << "(" << lhs.name << ", " << rhs.name << ")" << std::endl;
 
 					const bool ret = accumulateConstraint(lhs, rhs);
 					if (ret) {

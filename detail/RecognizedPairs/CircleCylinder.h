@@ -24,7 +24,7 @@
 // - none
 
 // Standard includes
-#include <iostream>
+// - none
 
 namespace boundary_features {
 	namespace detail {
@@ -32,7 +32,7 @@ namespace boundary_features {
 		struct ConstraintFromFeaturePair<Circle, Cylinder> {
 			public:
 				static bool accumulateConstraint(const Circle& lhs, const Cylinder& rhs, bool reverse) {
-					std::cout << "Got a concentric constraint! (circle, cylinder) reverse = " << std::boolalpha << reverse << std::endl << std::endl;
+					//std::cout << "Got a concentric constraint! (circle, cylinder) reverse = " << std::boolalpha << reverse << std::endl << std::endl;
 					return true;
 				}
 		};
