@@ -39,8 +39,8 @@ int main() {
 	b.insert(cylinder);
 	b.insert(circle);
 
-	int constraints = recognizeConstraints(a, b);
-	std::cout << "Found a total of " << constraints << " constraints" << std::endl;
+	RecognizedConstraints c = recognizeConstraints(a, b);
+	std::cout << "Found a total of " << c.constraintsRecognized << " constraints" << std::endl;
 
 	return 0;
 }

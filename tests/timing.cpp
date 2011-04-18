@@ -33,19 +33,24 @@ inline bool flipCoin() {
 double timeRecognition(FeatureSet const& a, FeatureSet const& b, int iterations) {
 	boost::timer t;
 	for (int i = 0; i < iterations; ++i) {
-		int constraints = recognizeConstraints(a, b);
+		recognizeConstraints(a, b);
 	}
 	return t.elapsed();
 }
 
 int main() {
 	Circle circle;
+	Cone cone;
 	Cylinder cylinder;
 	Plane plane;
+	Sphere sphere;
 
 	FeatureSet a;
 	if (flipCoin()) {
 		a.insert(circle);
+	}
+	if (flipCoin()) {
+		a.insert(cone);
 	}
 	if (flipCoin()) {
 		a.insert(cylinder);
@@ -53,10 +58,16 @@ int main() {
 	if (flipCoin()) {
 		a.insert(plane);
 	}
+	if (flipCoin()) {
+		a.insert(sphere);
+	}
 
 	FeatureSet b;
 	if (flipCoin()) {
 		b.insert(circle);
+	}
+	if (flipCoin()) {
+		b.insert(cone);
 	}
 	if (flipCoin()) {
 		b.insert(cylinder);
@@ -64,6 +75,13 @@ int main() {
 	if (flipCoin()) {
 		b.insert(plane);
 	}
+	if (flipCoin()) {
+		b.insert(sphere);
+	}
+
+	RecognizedConstraints c = recognizeConstraints(a, b);
+	std::cout << "Checking " << c.pairsChecked << " pairs to find " << c.constraintsRecognized << " constraints" << std::endl;
+	double pairs = c.pairsChecked;
 
 	const double GOAL_TIME = 3;
 	int iterations = 1000000;
@@ -76,8 +94,8 @@ int main() {
 		iterations = GOAL_TIME / perOp;
 	}
 	std::cout << std::endl;
-	std::cout << "Time per operation: " << perOp << std::endl;
-	std::cout << "Operations per second: " << 1.0 / perOp << std::endl;
-	std::cout << "Operations per millisecond: " << 0.001 / perOp << std::endl;
+	std::cout << "Time per pair checked: " << (perOp / pairs) << std::endl;
+	std::cout << "Pairs checked per second: " << 1.0 / (perOp / pairs) << std::endl;
+	std::cout << "Pairs checked per millisecond: " << 0.001 / (perOp / pairs) << std::endl;
 	return 0;
 }

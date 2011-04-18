@@ -36,13 +36,16 @@
 // - none
 
 namespace boundary_features {
-	int recognizeConstraints(FeatureSet const & a, FeatureSet const& b) {
+	RecognizedConstraints recognizeConstraints(FeatureSet const & a, FeatureSet const& b) {
 		detail::BinaryConstraintVisitor visitor;
 		for (FeatureSet::const_iterator itA = a.begin(); itA != a.end(); ++itA) {
 			for (FeatureSet::const_iterator itB = b.begin(); itB != b.end(); ++itB) {
 				boost::apply_visitor(visitor, *itA, *itB);
 			}
 		}
-		return visitor.constraints;
+		RecognizedConstraints c;
+		c.constraintsRecognized = visitor.constraints;
+		c.pairsChecked = visitor.pairs;
+		return c;
 	}
 } // end of namespace boundary_features

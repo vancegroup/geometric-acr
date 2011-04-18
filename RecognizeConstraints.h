@@ -35,7 +35,11 @@ namespace boundary_features {
 		in detail/RecognizedPairs (see CircleCylinder.h for an example), and then include
 		the new pair's header in RecognizeConstraints.cpp.
 	*/
-	int recognizeConstraints(FeatureSet const & a, FeatureSet const& b);
+	struct RecognizedConstraints {
+		int pairsChecked;
+		int constraintsRecognized;
+	};
+	RecognizedConstraints recognizeConstraints(FeatureSet const & a, FeatureSet const& b);
 } // end of namespace boundary_features
 
 #endif // INCLUDED_RecognizeConstraints_h_GUID_da56693d_7825_4cfb_9719_7cb1df90d101
