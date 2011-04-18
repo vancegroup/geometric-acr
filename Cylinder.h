@@ -22,7 +22,7 @@
 #include <Eigen/Core>
 
 // Standard includes
-// - none
+#include <string>
 
 namespace boundary_features {
 	struct Cylinder {
@@ -34,7 +34,7 @@ namespace boundary_features {
 			normal(Eigen::Vector3d::UnitX()),
 			radius(0.0) {}
 
-		const char * name;
+		std::string name;
 
 		Eigen::Vector3d center;
 		Eigen::Vector3d normal;

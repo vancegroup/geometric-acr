@@ -22,7 +22,7 @@
 #include <Eigen/Core>
 
 // Standard includes
-// - none
+#include <string>
 
 namespace boundary_features {
 	struct Plane {
@@ -33,7 +33,7 @@ namespace boundary_features {
 			point(Eigen::Vector3d::Zero()),
 			normal(Eigen::Vector3d::UnitX()) {}
 
-		const char * name;
+		std::string name;
 
 		Eigen::Vector3d point;
 		Eigen::Vector3d normal;
