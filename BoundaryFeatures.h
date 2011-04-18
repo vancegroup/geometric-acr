@@ -19,8 +19,10 @@
 #include "BoundaryFeatures_fwd.h"
 
 #include "Circle.h"
+#include "Cone.h"
 #include "Cylinder.h"
 #include "Plane.h"
+#include "Sphere.h"
 
 // Library/third-party includes
 #include <boost/variant/variant.hpp>

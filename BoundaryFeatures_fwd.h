@@ -27,10 +27,26 @@
 
 namespace boundary_features {
 	struct Circle;
+	struct Cone;
 	struct Cylinder;
 	struct Plane;
+	struct Sphere;
 
-	typedef boost::variant<Circle, Cylinder, Plane> BoundaryFeature;
+	/// Variant type that can hold any boundary feature. Generally no need
+	/// to manipulate this directly.
+	typedef boost::variant <
+	Circle
+	,
+	Cone
+	,
+	Cylinder
+	,
+	Plane
+	,
+	Sphere
+	> BoundaryFeature;
+
+	/// Set containing unique boundary features.
 	typedef std::set<BoundaryFeature> FeatureSet;
 } // end of namespace boundary_features
 
