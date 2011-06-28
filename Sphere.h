@@ -42,6 +42,10 @@ namespace boundary_features {
 		return lhs.radius < rhs.radius ? true :
 		       lhs.center.squaredNorm() < rhs.center.squaredNorm();
 	}
+	inline bool operator==(Sphere const& lhs, Sphere const& rhs) {
+		return lhs.radius == rhs.radius &&
+		       lhs.center == rhs.center;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_Sphere_h_GUID_b114af88_743e_41a9_8a10_7b3b92e6ee85

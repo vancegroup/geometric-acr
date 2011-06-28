@@ -51,6 +51,14 @@ namespace boundary_features {
 		       lhs.axis.squaredNorm() < rhs.axis.squaredNorm() ? true :
 		       lhs.ref.squaredNorm() < rhs.ref.squaredNorm();
 	}
+	/// @todo check for equivalence not just exact equality
+	inline bool operator==(Cone const& lhs, Cone const& rhs) {
+		return lhs.radius == rhs.radius &&
+		       lhs.halfangle == rhs.halfangle &&
+		       lhs.center == rhs.center &&
+		       lhs.axis == rhs.axis &&
+		       lhs.ref == rhs.ref;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_Cone_h_GUID_97893b75_0ba2_4894_b664_d3286f112276

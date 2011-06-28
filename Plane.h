@@ -43,6 +43,11 @@ namespace boundary_features {
 		return lhs.point.squaredNorm() < rhs.point.squaredNorm() ? true :
 		       lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
 	}
+	/// @todo make this check to see if the planes are equivalent
+	inline bool operator==(Plane const& lhs, Plane const& rhs) {
+		return lhs.point == rhs.point &&
+		       lhs.normal == rhs.normal;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_Plane_h_GUID_1b56a2dc_af86_4e85_b77e_c2f1fe0ed32c

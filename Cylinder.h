@@ -46,6 +46,12 @@ namespace boundary_features {
 		       lhs.center.squaredNorm() < rhs.center.squaredNorm() ? true :
 		       lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
 	}
+	/// @todo check for equivalence not just exact equality
+	inline bool operator==(Cylinder const& lhs, Cylinder const& rhs) {
+		return lhs.radius == rhs.radius &&
+		       lhs.center == rhs.center &&
+		       lhs.normal == rhs.normal;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_Cylinder_h_GUID_bd66677a_f108_4556_9b9e_d8ace3b8b6ad

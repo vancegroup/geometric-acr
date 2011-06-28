@@ -45,6 +45,11 @@ namespace boundary_features {
 		       lhs.center.squaredNorm() < rhs.center.squaredNorm() ? true :
 		       lhs.normal.squaredNorm() < rhs.normal.squaredNorm();
 	}
+	inline bool operator==(Circle const& lhs, Circle const& rhs) {
+		return lhs.radius == rhs.radius &&
+		       lhs.center == rhs.center &&
+		       lhs.normal == rhs.normal;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_Circle_h_GUID_d0a7de7d_a284_4ab9_bb8a_c7672a4618ab
