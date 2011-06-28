@@ -36,6 +36,7 @@ namespace boundary_features {
 
 			virtual ~CylindricalConstraint() {}
 			virtual void toText(std::ostream & os) const;
+			virtual bool operator==(GeometricConstraint const& rhs);
 		protected:
 			CylindricalConstraint(VectorPair const & points, VectorPair const & axes);
 			void processNewPose();

@@ -65,4 +65,13 @@ namespace boundary_features {
 		   << _points.second.transpose() << std::endl;
 	}
 
+	bool CylindricalConstraint::operator==(GeometricConstraint const& rhs) {
+		CylindricalConstraint const * other = dynamic_cast<CylindricalConstraint const *>(&rhs);
+		if (!other) {
+			return false;
+		}
+
+		return _points == other->_points && _axes == other->_axes;
+	}
+
 } // end of namespace boundary_features

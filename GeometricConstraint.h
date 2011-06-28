@@ -46,6 +46,11 @@ namespace boundary_features {
 			}
 
 			virtual void toText(std::ostream & os) const = 0;
+
+			virtual bool operator==(GeometricConstraint const&) {
+				return false;
+			}
+
 		protected:
 			/// Default constructor -protected to force subclassing.
 			/// Inherited classes should also protect their constructors,
