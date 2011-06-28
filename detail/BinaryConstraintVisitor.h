@@ -46,10 +46,9 @@ namespace boundary_features {
 				template<typename T, typename U>
 				void operator()(const T& lhs, const U& rhs) {
 					c.pairsChecked++;
-
-					const bool ret = accumulateConstraint(lhs, rhs);
+					ConstraintPtr ret = accumulateConstraint(lhs, rhs);
 					if (ret) {
-						c.constraintsRecognized++;
+						c.constraintsRecognized.insert(ret);
 					}
 				}
 

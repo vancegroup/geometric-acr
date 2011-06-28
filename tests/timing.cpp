@@ -54,7 +54,7 @@ int main() {
 	b.insert(sphere);
 
 	RecognizedConstraints c = recognizeConstraints(a, b);
-	std::cout << "Checking " << c.pairsChecked << " pairs to find " << c.constraintsRecognized << " constraints" << std::endl;
+	std::cout << "Checking " << c.pairsChecked << " pairs to find " << c.constraintsRecognized.size() << " constraints" << std::endl;
 	double pairs = c.pairsChecked;
 
 	const double GOAL_TIME = 3;

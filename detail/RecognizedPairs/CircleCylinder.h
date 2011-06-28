@@ -19,6 +19,7 @@
 #include "../ConstraintFromFeaturePair_fwd.h"
 #include "../../Circle.h"
 #include "../../Cylinder.h"
+#include "../../CylindricalConstraint.h"
 
 // Library/third-party includes
 // - none
@@ -31,9 +32,12 @@ namespace boundary_features {
 		template<>
 		struct ConstraintFromFeaturePair<Circle, Cylinder> {
 			public:
-				static bool accumulateConstraint(const Circle& lhs, const Cylinder& rhs, bool reverse) {
-					//std::cout << "Got a concentric constraint! (circle, cylinder) reverse = " << std::boolalpha << reverse << std::endl << std::endl;
-					return true;
+				static ConstraintPtr accumulateConstraint(const Circle& lhs, const Cylinder& rhs, bool reverse) {
+					if (reverse) {
+						return CylindricalConstraint::create(std::make_pair(rhs.center, lhs.center), std::make_pair(rhs.normal, lhs.normal));
+					}
+
+					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal));
 				}
 		};
 

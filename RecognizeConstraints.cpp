@@ -28,9 +28,9 @@
 #include "detail/BinaryConstraintVisitor.h"
 
 #include "detail/RecognizedPairs/CircleCylinder.h"
+#include "detail/RecognizedPairs/CylinderCylinder.h"
 /*
 #include "detail/RecognizedPairs/ConeCone.h"
-#include "detail/RecognizedPairs/CylinderCylinder.h"
 #include "detail/RecognizedPairs/PlanePlane.h"
 #include "detail/RecognizedPairs/SphereCylinder.h"
 #include "detail/RecognizedPairs/SphereSphere.h"

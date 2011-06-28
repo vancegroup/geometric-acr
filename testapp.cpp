@@ -40,7 +40,7 @@ int main() {
 	b.insert(circle);
 
 	RecognizedConstraints c = recognizeConstraints(a, b);
-	std::cout << "Found a total of " << c.constraintsRecognized << " constraints" << std::endl;
+	std::cout << "Found a total of " << c.constraintsRecognized.size() << " constraints" << std::endl;
 
 	return 0;
 }

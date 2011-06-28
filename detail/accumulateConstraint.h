@@ -43,32 +43,32 @@ namespace boundary_features {
 			accumulateConstraint<A, B>()
 		*/
 		template<typename T, typename U>
-		bool accumulateConstraint(const T& /*lhs*/,
-		                          const U& /*rhs*/,
-		                          typename NotRecognized<T, U>::type* = 0,
-		                          typename NotRecognized<U, T>::type* = 0) {
-			return false;
+		ConstraintPtr accumulateConstraint(const T& /*lhs*/,
+		                                   const U& /*rhs*/,
+		                                   typename NotRecognized<T, U>::type* = 0,
+		                                   typename NotRecognized<U, T>::type* = 0) {
+			return ConstraintPtr();
 		}
 
 		template<typename T, typename U>
-		bool accumulateConstraint(const T& lhs,
-		                          const U& rhs,
-		                          typename IsRecognized<T, U>::type* = 0,
-		                          typename NotRecognized<U, T>::type* = 0) {
+		ConstraintPtr accumulateConstraint(const T& lhs,
+		                                   const U& rhs,
+		                                   typename IsRecognized<T, U>::type* = 0,
+		                                   typename NotRecognized<U, T>::type* = 0) {
 			return ConstraintFromFeaturePair<T, U>::accumulateConstraint(lhs, rhs, false);
 		}
 		template<typename T, typename U>
-		bool accumulateConstraint(const T& lhs,
-		                          const U& rhs,
-		                          typename NotRecognized<T, U>::type* = 0,
-		                          typename IsRecognized<U, T>::type* = 0) {
+		ConstraintPtr accumulateConstraint(const T& lhs,
+		                                   const U& rhs,
+		                                   typename NotRecognized<T, U>::type* = 0,
+		                                   typename IsRecognized<U, T>::type* = 0) {
 			return ConstraintFromFeaturePair<U, T>::accumulateConstraint(rhs, lhs, true);
 		}
 
 		template<typename T>
-		bool accumulateConstraint(const T& lhs,
-		                          const T& rhs,
-		                          typename IsRecognized<T, T>::type* = 0) {
+		ConstraintPtr accumulateConstraint(const T& lhs,
+		                                   const T& rhs,
+		                                   typename IsRecognized<T, T>::type* = 0) {
 			return ConstraintFromFeaturePair<T, T>::accumulateConstraint(lhs, rhs, false);
 		}
 

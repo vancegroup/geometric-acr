@@ -17,6 +17,7 @@
 
 // Internal Includes
 #include "BoundaryFeatures_fwd.h"
+#include "GeometricConstraint_fwd.h"
 
 // Library/third-party includes
 // - none
@@ -32,9 +33,9 @@ namespace boundary_features {
 		int pairsChecked;
 
 		/// Constraints recognized
-		int constraintsRecognized;
+		ConstraintSet constraintsRecognized;
 
-		RecognizedConstraints() : pairsChecked(0), constraintsRecognized(0) {}
+		RecognizedConstraints() : pairsChecked(0) {}
 	};
 
 

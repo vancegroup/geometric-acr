@@ -18,6 +18,7 @@
 // Internal Includes
 #include "../ConstraintFromFeaturePair_fwd.h"
 #include "../../Cylinder.h"
+#include "../../CylindricalConstraint.h"
 
 // Library/third-party includes
 // - none
@@ -32,8 +33,12 @@ namespace boundary_features {
 		template<>
 		struct ConstraintFromFeaturePair<Cylinder, Cylinder> {
 			public:
-				static bool accumulateConstraint(const Cylinder& lhs, const Cylinder& rhs, bool reverse) {
-					return true;
+				static ConstraintPtr accumulateConstraint(const Cylinder& lhs, const Cylinder& rhs, bool reverse) {
+					if (reverse) {
+						return ConstraintFromFeaturePair::accumulateConstraint(rhs, lhs, false);
+					}
+
+					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal));
 				}
 		};
 
