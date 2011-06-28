@@ -37,9 +37,14 @@ namespace boundary_features {
 		public:
 			ConstraintSet() {}
 
-
+			iterator begin() {
+				return _set.begin();
+			}
 			const_iterator begin() const {
 				return _set.begin();
+			}
+			iterator end() {
+				return _set.end();
 			}
 			const_iterator end() const {
 				return _set.end();
@@ -48,7 +53,7 @@ namespace boundary_features {
 
 			bool containsSubset(ConstraintSet const& other) const;
 
-			iterator insert(ConstraintPtr const& constraint);
+			const_iterator insert(ConstraintPtr const& constraint);
 			void erase(ConstraintPtr const& constraint);
 			bool extend(ConstraintSet const& other);
 

@@ -65,7 +65,7 @@ int main() {
 		double elapsed = timeRecognition(a, b, iterations);
 		perOp = elapsed / static_cast<double>(iterations);
 		std::cout << "elapsed: " << elapsed << std::endl;
-		iterations = GOAL_TIME / perOp;
+		iterations = static_cast<int>(GOAL_TIME / perOp);
 	}
 	std::cout << std::endl;
 	std::cout << "Time per pair checked: " << (perOp / pairs) << std::endl;

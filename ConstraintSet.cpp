@@ -29,12 +29,12 @@ namespace boundary_features {
 			return false;
 		}
 
-		iterator result = _set.find(constraint);
+		const_iterator result = _set.find(constraint);
 		if (result != end()) {
 			return true;
 		}
 
-		for (iterator it = begin(); it != end(); ++it) {
+		for (const_iterator it = begin(); it != end(); ++it) {
 			if (*(*it) == *constraint) {
 				return true;
 			}
@@ -52,7 +52,7 @@ namespace boundary_features {
 		return true;
 	}
 
-	ConstraintSet::iterator ConstraintSet::insert(ConstraintPtr const& constraint) {
+	ConstraintSet::const_iterator ConstraintSet::insert(ConstraintPtr const& constraint) {
 		// no adding null constraints.
 		if (!constraint) {
 			return end();
@@ -77,10 +77,12 @@ namespace boundary_features {
 	}
 
 	bool ConstraintSet::extend(ConstraintSet const& other) {
+		/// @todo do we even need this method anymore?
 		bool inserted = false;
-		for (iterator it = other.begin(); it != other.end(); ++it) {
-			insert(*it);
+		for (const_iterator it = other.begin(); it != other.end(); ++it) {
+			inserted = inserted || (insert(*it) != end());
 		}
+		return inserted;
 	}
 
 
