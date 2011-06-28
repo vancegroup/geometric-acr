@@ -20,18 +20,22 @@
 
 // Library/third-party includes
 #include <core/SimTypes.h>
-
+#include <boost/shared_ptr.hpp>
 
 // Standard includes
 #include <utility>
 
 namespace boundary_features {
+
 	class GeometricConstraint {
 		public:
 			typedef std::pair<Eigen::Transform3d, Eigen::Transform3d> PosePair;
 			typedef std::pair<Eigen::Vector3d, Eigen::Vector3d> VectorPair;
-			GeometricConstraint();
 			virtual ~GeometricConstraint() {};
+
+			virtual bool isValid() const {
+				return true;
+			}
 
 			/// @brief Get alpha, the value in [0, 1] indicating how engaged the constraint is.
 			double getEngagement() const {
@@ -41,6 +45,7 @@ namespace boundary_features {
 			/// @brief Update the positions of the two objects
 			void updatePoses(Eigen::Transform3d const& first, Eigen::Transform3d const& second);
 		protected:
+			GeometricConstraint();
 			virtual void processNewPose() = 0;
 			void setAlpha(double a);
 			PosePair const& _pose() {
@@ -50,6 +55,28 @@ namespace boundary_features {
 		private:
 			double _alpha;
 			PosePair _poses;
+	};
+
+	typedef boost::shared_ptr<GeometricConstraint> ConstraintPtr;
+
+	class NullConstraint : public GeometricConstraint {
+		public:
+			virtual ~NullConstraint() {}
+
+			virtual bool isValid() const {
+				return false;
+			}
+
+			static ConstraintPtr create() {
+				ConstraintPtr temp(new NullConstraint);
+				return temp;
+			}
+
+		protected:
+			NullConstraint() : GeometricConstraint() {}
+			virtual void processNewPose() {
+				/* no-op */
+			}
 	};
 } // end of namespace boundary_features
 

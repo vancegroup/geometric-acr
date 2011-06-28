@@ -29,9 +29,14 @@ namespace boundary_features {
 
 	class CylindricalConstraint : public GeometricConstraint {
 		public:
-			CylindricalConstraint(VectorPair points, VectorPair axes);
+			static ConstraintPtr create(VectorPair const & points, VectorPair const & axes) {
+				ConstraintPtr temp(new CylindricalConstraint(points, axes));
+				return temp;
+			}
+
 			virtual ~CylindricalConstraint() {}
 		protected:
+			CylindricalConstraint(VectorPair const & points, VectorPair const & axes);
 			void processNewPose();
 		private:
 			VectorPair _points;
