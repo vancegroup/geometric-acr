@@ -24,7 +24,7 @@
 //typedef Eigen::ParametrizedLine<double, 3> Line3d;
 namespace boundary_features {
 
-	CylindricalConstraint::CylindricalConstraint(GeometricConstraint::VectorPair points, GeometricConstraint::VectorPair axes)
+	CylindricalConstraint::CylindricalConstraint(GeometricConstraint::VectorPair const & points, GeometricConstraint::VectorPair const & axes)
 		: _points(points)
 		, _axes(axes) {
 		processNewPose();
