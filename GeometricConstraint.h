@@ -23,6 +23,7 @@
 
 // Standard includes
 #include <utility>
+#include <iosfwd>
 
 namespace boundary_features {
 
@@ -43,6 +44,8 @@ namespace boundary_features {
 			static ConstraintPtr null() {
 				return ConstraintPtr();
 			}
+
+			virtual void toText(std::ostream & os) const = 0;
 		protected:
 			/// Default constructor -protected to force subclassing.
 			/// Inherited classes should also protect their constructors,
@@ -62,6 +65,11 @@ namespace boundary_features {
 			PosePair _poses;
 	};
 
+	template<typename StreamType>
+	StreamType & operator<<(StreamType & os, GeometricConstraint const& constraint) {
+		constraint.toText(os);
+		return os;
+	}
 } // end of namespace boundary_features
 
 #endif // INCLUDED_GeometricConstraint_h_GUID_fbf5ef9e_87e5_4292_bbc0_4ed64702ac05

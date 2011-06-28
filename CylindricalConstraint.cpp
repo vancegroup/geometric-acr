@@ -20,6 +20,7 @@
 
 // Standard includes
 #include <cmath>
+#include <ostream>
 
 //typedef Eigen::ParametrizedLine<double, 3> Line3d;
 namespace boundary_features {
@@ -50,6 +51,18 @@ namespace boundary_features {
 
 		/// see pg 76 of Faas thesis
 		setAlpha(0.5 * std::exp(-theta) + 0.5 * std::exp(-d));
+	}
+
+	void CylindricalConstraint::toText(std::ostream & os) const {
+		os << "Cylindrical Constraint:"
+		   << "Axis 1:" << std::endl
+		   << _axes.first.transpose() << std::endl
+		   << "Axis 2:" << std::endl
+		   << _axes.second.transpose() << std::endl
+		   << "Point 1:" << std::endl
+		   << _points.first.transpose() << std::endl
+		   << "Point 2:" << std::endl
+		   << _points.second.transpose() << std::endl;
 	}
 
 } // end of namespace boundary_features
