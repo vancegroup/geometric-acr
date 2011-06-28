@@ -22,6 +22,7 @@ set(HEADERS
 	Cylinder.h
 	CylindricalConstraint.h
 	GeometricConstraint.h
+	GeometricConstraint_fwd.h
 	Plane.h
 	RecognizeConstraints.h
 	Sphere.h)
