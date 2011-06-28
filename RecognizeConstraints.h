@@ -18,6 +18,7 @@
 // Internal Includes
 #include "BoundaryFeatures_fwd.h"
 #include "GeometricConstraint_fwd.h"
+#include "ConstraintSet.h"
 
 // Library/third-party includes
 // - none
