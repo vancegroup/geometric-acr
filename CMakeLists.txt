@@ -7,6 +7,8 @@ set(SOURCES
 	Cone.cpp
 	Constraint.cpp
 	Cylinder.cpp
+	CylindricalConstraint.cpp
+	GeometricConstraint.cpp
 	Plane.cpp
 	RecognizeConstraints.cpp
 	Sphere.cpp)
@@ -18,6 +20,8 @@ set(HEADERS
 	Cone.h
 	Constraint.h
 	Cylinder.h
+	CylindricalConstraint.h
+	GeometricConstraint.h
 	Plane.h
 	RecognizeConstraints.h
 	Sphere.h)
