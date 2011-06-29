@@ -29,6 +29,7 @@ namespace boundary_features {
 
 	class CylindricalConstraint : public GeometricConstraint {
 		public:
+			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 			static ConstraintPtr create(VectorPair const & points, VectorPair const & axes) {
 				ConstraintPtr temp(new CylindricalConstraint(points, axes));
 				return temp;

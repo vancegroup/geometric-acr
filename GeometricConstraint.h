@@ -29,6 +29,7 @@ namespace boundary_features {
 
 	class GeometricConstraint {
 		public:
+			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 			typedef std::pair<Eigen::Transform3d, Eigen::Transform3d> PosePair;
 			typedef std::pair<Eigen::Vector3d, Eigen::Vector3d> VectorPair;
 			virtual ~GeometricConstraint() {};
