@@ -5,7 +5,6 @@
 set(SOURCES
 	Circle.cpp
 	Cone.cpp
-	Constraint.cpp
 	ConstraintSet.cpp
 	Cylinder.cpp
 	CylindricalConstraint.cpp
@@ -19,7 +18,6 @@ set(HEADERS
 	BoundaryFeatures.h
 	Circle.h
 	Cone.h
-	Constraint.h
 	ConstraintSet.h
 	Cylinder.h
 	CylindricalConstraint.h
