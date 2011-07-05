@@ -30,8 +30,8 @@ namespace boundary_features {
 	class CylindricalConstraint : public GeometricConstraint {
 		public:
 			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-			static ConstraintPtr create(VectorPair const & points, VectorPair const & axes) {
-				ConstraintPtr temp(new CylindricalConstraint(points, axes));
+			static ConstraintPtr create(VectorPair const & points, VectorPair const & axes, std::pair<double, double> const& radii) {
+				ConstraintPtr temp(new CylindricalConstraint(points, axes, radii));
 				return temp;
 			}
 
@@ -39,13 +39,15 @@ namespace boundary_features {
 			virtual void toText(std::ostream & os) const;
 			virtual bool operator==(GeometricConstraint const& rhs);
 		protected:
-			CylindricalConstraint(VectorPair const & points, VectorPair const & axes);
+			CylindricalConstraint(VectorPair const & points, VectorPair const & axes, std::pair<double, double> const& radii);
 			void processNewPose();
 		private:
 			VectorPair _points;
 			VectorPair _pointsXformed;
 			VectorPair _axes;
 			VectorPair _axesXformed;
+			std::pair<double, double> _radii;
+			const double _clearance;
 	};
 
 } // end of namespace boundary_features

@@ -25,9 +25,11 @@
 //typedef Eigen::ParametrizedLine<double, 3> Line3d;
 namespace boundary_features {
 
-	CylindricalConstraint::CylindricalConstraint(GeometricConstraint::VectorPair const & points, GeometricConstraint::VectorPair const & axes)
+	CylindricalConstraint::CylindricalConstraint(GeometricConstraint::VectorPair const & points, GeometricConstraint::VectorPair const & axes, std::pair<double, double> const& radii)
 		: _points(points)
-		, _axes(axes) {
+		, _axes(axes)
+		, _radii(radii)
+		, _clearance(std::abs(_radii.first - _radii.second)) {
 		processNewPose();
 	}
 
@@ -48,9 +50,10 @@ namespace boundary_features {
 		const double crossNorm = rotationAxis.norm();
 		const double d = std::abs((rotationAxis / crossNorm).dot(_pointsXformed.first - _pointsXformed.second));
 		const double theta = std::asin(crossNorm);
+		const double dDimensionless = d / _clearance;
 
 		/// see pg 76 of Faas thesis
-		setAlpha(0.5 * std::exp(-theta) + 0.5 * std::exp(-d));
+		setAlpha(0.5 * std::exp(-theta) + 0.5 * std::exp(-dDimensionless * 10.0));
 	}
 
 	void CylindricalConstraint::toText(std::ostream & os) const {

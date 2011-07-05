@@ -38,7 +38,7 @@ namespace boundary_features {
 						return ConstraintFromFeaturePair::accumulateConstraint(rhs, lhs, false);
 					}
 
-					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal));
+					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal), std::make_pair(lhs.radius, rhs.radius));
 				}
 		};
 

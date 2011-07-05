@@ -34,10 +34,10 @@ namespace boundary_features {
 			public:
 				static ConstraintPtr accumulateConstraint(const Circle& lhs, const Cylinder& rhs, bool reverse) {
 					if (reverse) {
-						return CylindricalConstraint::create(std::make_pair(rhs.center, lhs.center), std::make_pair(rhs.normal, lhs.normal));
+						return CylindricalConstraint::create(std::make_pair(rhs.center, lhs.center), std::make_pair(rhs.normal, lhs.normal), std::make_pair(rhs.radius, lhs.radius));
 					}
 
-					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal));
+					return CylindricalConstraint::create(std::make_pair(lhs.center, rhs.center), std::make_pair(lhs.normal, rhs.normal), std::make_pair(lhs.radius, rhs.radius));
 				}
 		};
 
