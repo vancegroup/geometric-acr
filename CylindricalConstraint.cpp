@@ -53,7 +53,7 @@ namespace boundary_features {
 		const double dDimensionless = d / _clearance;
 
 		/// see pg 76 of Faas thesis
-		setAlpha(0.5 * std::exp(-theta) + 0.5 * std::exp(-dDimensionless * 10.0));
+		setAlignment(0.5 * std::exp(-theta) + 0.5 * std::exp(-dDimensionless * 10.0));
 	}
 
 	void CylindricalConstraint::toText(std::ostream & os) const {

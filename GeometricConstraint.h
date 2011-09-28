@@ -34,9 +34,9 @@ namespace boundary_features {
 			typedef std::pair<Eigen::Vector3d, Eigen::Vector3d> VectorPair;
 			virtual ~GeometricConstraint() {};
 
-			/// @brief Get alpha, the value in [0, 1] indicating how engaged the constraint is.
-			double getEngagement() const {
-				return _alpha;
+			/// @brief Get alpha, the value in [0, 1] indicating how aligned we are with the constraint is.
+			double getAlignment() const {
+				return _alignment;
 			}
 
 			/// @brief Update the positions of the two objects
@@ -61,13 +61,13 @@ namespace boundary_features {
 			/// @brief Called when new poses are loaded - it should process them and call setAlpha()
 			virtual void processNewPose() = 0;
 
-			void setAlpha(double a);
+			void setAlignment(double a);
 			PosePair const& _pose() {
 				return _poses;
 			}
 
 		private:
-			double _alpha;
+			double _alignment;
 			PosePair _poses;
 	};
 

@@ -43,13 +43,13 @@ namespace boundary_features {
 		}
 	}
 
-	void GeometricConstraint::setAlpha(double a) {
+	void GeometricConstraint::setAlignment(double a) {
 #ifdef CONSTRAINT_STRICT_CHECKING
 		if (a < 0.0 || a > 1.0) {
 			throw std::out_of_range("alpha value computed by geometric constraint must be in [0, 1]!");
 		}
 #endif
-		_alpha = a;
+		_alignment = a;
 	}
 
 } // end of namespace boundary_features
