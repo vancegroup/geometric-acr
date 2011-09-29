@@ -29,7 +29,9 @@ namespace boundary_features {
 		return a.first.matrix() == b.first.matrix() && a.second.matrix() == b.second.matrix();
 	}
 
-	GeometricConstraint::GeometricConstraint() {
+	GeometricConstraint::GeometricConstraint()
+		: _alignment(0)
+		{
 
 	}
 
