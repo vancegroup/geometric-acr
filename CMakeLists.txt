@@ -48,13 +48,11 @@ set(DETAIL_HEADERS
 	detail/ConstraintFromFeaturePair_fwd.h
 	detail/IsRecognized.h)
 
-add_library(sparta-bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
-
-add_cppcheck(sparta-bfeat STYLE FAIL_ON_WARNING)
+add_library(bfeat STATIC ${SOURCES} ${HEADERS} ${DETAIL_HEADERS})
 
 if(BUILD_TESTING)
-	add_executable(sparta-bfeat-testapp testapp.cpp)
-	target_link_libraries(sparta-bfeat-testapp sparta-bfeat)
+	add_executable(bfeat-testapp testapp.cpp)
+	target_link_libraries(bfeat-testapp bfeat)
 
 	add_subdirectory(tests)
 endif()

@@ -8,7 +8,7 @@ add_boost_test(boundary_features
 	SOURCES
 	test_boundary_features.cpp
 	LIBRARIES
-	sparta-bfeat)
+	bfeat)
 
 add_executable(bfeat_timing timing.cpp)
-target_link_libraries(bfeat_timing sparta-bfeat)
+target_link_libraries(bfeat_timing bfeat)
