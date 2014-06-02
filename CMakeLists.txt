@@ -1,6 +1,10 @@
-# 2009-2011 Ryan Pavlik <rpavlik@iastate.edu>
-# http://academic.cleardefinition.com/
-# Iowa State University HCI Graduate Program/VRAC
+cmake_minimum_required(VERSION 2.6.2)
+
+# Set package properties
+project(boundaryfeatures)
+
+include(CTest)
+
 
 set(SOURCES
 	Circle.cpp
