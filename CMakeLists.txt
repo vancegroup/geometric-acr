@@ -3,8 +3,11 @@ cmake_minimum_required(VERSION 2.6.2)
 # Set package properties
 project(boundaryfeatures)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(CTest)
 
+include(SetDefaultBuildType)
+set_default_build_type(RelWithDebInfo)
 
 set(SOURCES
 	Circle.cpp

@@ -3,6 +3,7 @@
 # http://academic.cleardefinition.com/
 # Iowa State University HCI Graduate Program/VRAC
 
+include(BoostTestTargets)
 add_boost_test(boundary_features
 	SOURCES
 	test_boundary_features.cpp
