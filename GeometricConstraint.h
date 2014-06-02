@@ -19,7 +19,7 @@
 #include "GeometricConstraint_fwd.h"
 
 // Library/third-party includes
-#include <core/SimTypes.h>
+#include <Eigen/Eigen>
 
 // Standard includes
 #include <utility>
