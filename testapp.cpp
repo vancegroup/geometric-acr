@@ -13,8 +13,8 @@
 */
 
 // Internal Includes
-#include "RecognizeConstraints.h"
-#include "BoundaryFeatures.h"
+#include "boundary_features/RecognizeConstraints.h"
+#include "boundary_features/BoundaryFeatures.h"
 
 // Library/third-party includes
 // - none
