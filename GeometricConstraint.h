@@ -30,7 +30,7 @@ namespace boundary_features {
 	class GeometricConstraint {
 		public:
 			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-			typedef std::pair<Eigen::Transform3d, Eigen::Transform3d> PosePair;
+			typedef std::pair<Eigen::Affine3d, Eigen::Affine3d> PosePair;
 			typedef std::pair<Eigen::Vector3d, Eigen::Vector3d> VectorPair;
 			virtual ~GeometricConstraint() {};
 
@@ -40,7 +40,7 @@ namespace boundary_features {
 			}
 
 			/// @brief Update the positions of the two objects
-			void updatePoses(Eigen::Transform3d const& first, Eigen::Transform3d const& second);
+			void updatePoses(Eigen::Affine3d const& first, Eigen::Affine3d const& second);
 
 			static ConstraintPtr null() {
 				return ConstraintPtr();

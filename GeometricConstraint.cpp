@@ -35,7 +35,7 @@ namespace boundary_features {
 
 	}
 
-	void GeometricConstraint::updatePoses(Eigen::Transform3d const& first, Eigen::Transform3d const& second) {
+	void GeometricConstraint::updatePoses(Eigen::Affine3d const& first, Eigen::Affine3d const& second) {
 		PosePair newPoses(first, second);
 		if (newPoses == _poses) {
 			// this is actually not a change
