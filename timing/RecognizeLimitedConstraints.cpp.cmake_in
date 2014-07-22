@@ -32,7 +32,7 @@
 #include <boundary_features/BoundaryFeatures.h>
 #include <boundary_features/detail/BinaryConstraintVisitor.h>
 
-#cmakedefine BF_EXPERIMENT_CONDITION=BF_EXPERIMENT_CONDITION
+#define BF_EXPERIMENT_CONDITION @BF_EXPERIMENT_CONDITION@
 
 
 // Built-in compile-time consistency check
@@ -40,12 +40,12 @@
 #  error "CMake doesn't agree with lua/generated file on how many bits there are!"
 #endif
 
-#cmakedefine BF_EXPERIMENT_R0=BF_EXPERIMENT_R0
-#cmakedefine BF_EXPERIMENT_R1=BF_EXPERIMENT_R1
-#cmakedefine BF_EXPERIMENT_R2=BF_EXPERIMENT_R2
-#cmakedefine BF_EXPERIMENT_R3=BF_EXPERIMENT_R3
-#cmakedefine BF_EXPERIMENT_R4=BF_EXPERIMENT_R4
-#cmakedefine BF_EXPERIMENT_R5=BF_EXPERIMENT_R5
+#define BF_EXPERIMENT_R0 @BF_EXPERIMENT_R0@
+#define BF_EXPERIMENT_R1 @BF_EXPERIMENT_R1@
+#define BF_EXPERIMENT_R2 @BF_EXPERIMENT_R2@
+#define BF_EXPERIMENT_R3 @BF_EXPERIMENT_R3@
+#define BF_EXPERIMENT_R4 @BF_EXPERIMENT_R4@
+#define BF_EXPERIMENT_R5 @BF_EXPERIMENT_R5@
 
 #if BF_EXPERIMENT_R0
 #include <boundary_features/detail/RecognizedPairs/CircleCylinder.h>
@@ -90,3 +90,4 @@ size_t getExperimentCondition() { return BF_EXPERIMENT_CONDITION; }
 size_t getNumSymmetric() { return BF_EXPERIMENT_R0_SYMM + BF_EXPERIMENT_R1_SYMM + BF_EXPERIMENT_R2_SYMM + BF_EXPERIMENT_R3_SYMM + BF_EXPERIMENT_R4_SYMM + BF_EXPERIMENT_R5_SYMM; }
 size_t getNumAsymmetric() { return BF_EXPERIMENT_R0_ASYMM + BF_EXPERIMENT_R1_ASYMM + BF_EXPERIMENT_R2_ASYMM + BF_EXPERIMENT_R3_ASYMM + BF_EXPERIMENT_R4_ASYMM + BF_EXPERIMENT_R5_ASYMM; }
 size_t getNumBits() { return 6; }
+#include <boundary_features/RecognizeConstraints.cpp>

@@ -92,7 +92,7 @@ print[[/**
 #include <boundary_features/BoundaryFeatures.h>
 #include <boundary_features/detail/BinaryConstraintVisitor.h>
 
-#cmakedefine BF_EXPERIMENT_CONDITION=BF_EXPERIMENT_CONDITION
+#define BF_EXPERIMENT_CONDITION @BF_EXPERIMENT_CONDITION@
 
 ]]
 
@@ -107,7 +107,7 @@ print(([[
 
 -- For each recognizer/bit, write a cmakedefine
 foreachbit(function(i)
-    printNumbered(i,"#cmakedefine BF_EXPERIMENT_R#i#=BF_EXPERIMENT_R#i#")
+    printNumbered(i,"#define BF_EXPERIMENT_R#i# @BF_EXPERIMENT_R#i#@")
 end)
 
 -- Blank
@@ -156,4 +156,8 @@ local expression = table.concat(foreachbit(function(i, recog) return makeNumbere
 print([[size_t getNumAsymmetric() { return ]] .. expression .. [[; }]])
 
 print( ([[size_t getNumBits() { return %d; }]]):format(bits))
+
+-- Include the rest of the original implementation file.
+print [[
+#include <boundary_features/RecognizeConstraints.cpp>]]
 
