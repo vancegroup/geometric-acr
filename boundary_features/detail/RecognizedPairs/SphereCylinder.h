@@ -33,8 +33,8 @@ namespace boundary_features {
 		template<>
 		struct ConstraintFromFeaturePair<Sphere, Cylinder> {
 			public:
-				static bool accumulateConstraint(const Sphere& lhs, const Cylinder& rhs, bool reverse) {
-					return true;
+				static ConstraintPtr accumulateConstraint(const Sphere& lhs, const Cylinder& rhs, bool reverse) {
+					return NotYetImplementedConstraint::create();
 				}
 		};
 

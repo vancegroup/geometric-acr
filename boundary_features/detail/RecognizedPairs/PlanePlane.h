@@ -32,8 +32,8 @@ namespace boundary_features {
 		template<>
 		struct ConstraintFromFeaturePair<Plane, Plane> {
 			public:
-				static bool accumulateConstraint(const Plane& lhs, const Plane& rhs, bool reverse) {
-					return true;
+				static ConstraintPtr accumulateConstraint(const Plane& lhs, const Plane& rhs, bool reverse) {
+					return NotYetImplementedConstraint::create();
 				}
 		};
 
