@@ -20,6 +20,7 @@
 
 // Library/third-party includes
 #include <Eigen/Eigen>
+#include <boost/make_shared.hpp>
 
 // Standard includes
 #include <utility>
@@ -76,6 +77,23 @@ namespace boundary_features {
 		constraint.toText(os);
 		return os;
 	}
+	
+	class NotYetImplementedConstraint : public GeometricConstraint {
+		public:
+			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+			static ConstraintPtr create() {
+    			ConstraintPtr temp(new NotYetImplementedConstraint);
+				return temp;
+				//return boost::make_shared<NotYetImplementedConstraint>();
+			}
+
+			virtual ~NotYetImplementedConstraint() {}
+			virtual void toText(std::ostream & os) const;
+			virtual bool operator==(GeometricConstraint const& rhs);
+		protected:
+			NotYetImplementedConstraint();
+			void processNewPose();
+	};
 } // end of namespace boundary_features
 
 #endif // INCLUDED_GeometricConstraint_h_GUID_fbf5ef9e_87e5_4292_bbc0_4ed64702ac05
