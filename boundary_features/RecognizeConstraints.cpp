@@ -27,14 +27,15 @@
 #include "BoundaryFeatures.h"
 #include "detail/BinaryConstraintVisitor.h"
 
+#ifndef BF_EXPERIMENT
 #include "detail/RecognizedPairs/CircleCylinder.h"
 #include "detail/RecognizedPairs/CylinderCylinder.h"
-/*
 #include "detail/RecognizedPairs/ConeCone.h"
 #include "detail/RecognizedPairs/PlanePlane.h"
 #include "detail/RecognizedPairs/SphereCylinder.h"
 #include "detail/RecognizedPairs/SphereSphere.h"
-*/
+#endif
+
 
 // Library/third-party includes
 #include <boost/variant/apply_visitor.hpp>
