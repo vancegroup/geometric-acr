@@ -30,8 +30,7 @@ namespace boundary_features {
 	}
 
 	GeometricConstraint::GeometricConstraint()
-		: _alignment(0)
-		{
+		: _alignment(0) {
 
 	}
 
@@ -57,11 +56,11 @@ namespace boundary_features {
 	NotYetImplementedConstraint::NotYetImplementedConstraint() {}
 
 	void NotYetImplementedConstraint::toText(std::ostream & os) const {
-	    os << "NotYetImplementedConstraint";
+		os << "NotYetImplementedConstraint";
 	}
 
 	bool NotYetImplementedConstraint::operator==(GeometricConstraint const& rhs) {
-	    return NULL != dynamic_cast<NotYetImplementedConstraint const *>(&rhs);
+		return NULL != dynamic_cast<NotYetImplementedConstraint const *>(&rhs);
 	}
 
 	void NotYetImplementedConstraint::processNewPose() {}

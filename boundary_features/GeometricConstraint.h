@@ -77,12 +77,12 @@ namespace boundary_features {
 		constraint.toText(os);
 		return os;
 	}
-	
+
 	class NotYetImplementedConstraint : public GeometricConstraint {
 		public:
 			EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 			static ConstraintPtr create() {
-    			ConstraintPtr temp(new NotYetImplementedConstraint);
+				ConstraintPtr temp(new NotYetImplementedConstraint);
 				return temp;
 				//return boost::make_shared<NotYetImplementedConstraint>();
 			}
