@@ -9,6 +9,11 @@ set(COMMON_LIB_SOURCE
     ../boundary_features/Plane.cpp
     ../boundary_features/Sphere.cpp)
 
+set(COMMON_EXEC_SOURCE
+    main.cpp
+    DataRowOutputter.h
+    DataRowOutputter.cpp)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # number of recognizers
@@ -50,7 +55,7 @@ while(cond LESS MAX_ITER)
 
     # Make the custom executable - nothing special except what it links to.
     set(EXECNAME perform_condition_${cond}_timing)
-    add_executable(${EXECNAME} main.cpp)
+    add_executable(${EXECNAME} ${COMMON_EXEC_SOURCE})
     target_link_libraries(${EXECNAME} ${LIBNAME})
 
     math(EXPR cond "${cond} + 1")
