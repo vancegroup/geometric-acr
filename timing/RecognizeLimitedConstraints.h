@@ -23,7 +23,7 @@
 // - none
 
 // Library/third-party includes
-// - none
+#include <boundary_features/RecognizeConstraints.h>
 
 // Standard includes
 #include <cstddef>
