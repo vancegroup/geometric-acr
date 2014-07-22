@@ -18,6 +18,7 @@
 // Internal Includes
 #include "../ConstraintFromFeaturePair_fwd.h"
 #include "../../Cone.h"
+#include "../../GeometricConstraint.h"
 
 // Library/third-party includes
 // - none

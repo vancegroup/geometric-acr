@@ -19,6 +19,7 @@
 #include "../ConstraintFromFeaturePair_fwd.h"
 #include "../../Sphere.h"
 #include "../../Cylinder.h"
+#include "../../GeometricConstraint.h"
 
 // Library/third-party includes
 // - none
