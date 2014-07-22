@@ -28,7 +28,6 @@ using namespace boundary_features;
 // Approximately enough to last 3 seconds.
 const int ITERATIONS = 3000000;
 
-// Only print the last one
 const int TRIALS = 3;
 
 double timeRecognition(FeatureSet const& a, FeatureSet const& b, int iterations) {
