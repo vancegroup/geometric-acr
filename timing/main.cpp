@@ -25,8 +25,8 @@
 
 using namespace boundary_features;
 
-// Approximately enough to last 3 seconds.
-const int ITERATIONS = 3000000;
+// Approximately enough to last 1 second.
+const int ITERATIONS = 1000000;
 
 const int TRIALS = 3;
 
