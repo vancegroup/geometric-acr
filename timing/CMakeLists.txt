@@ -33,7 +33,7 @@ while(bit LESS BF_NUM_BITS)
 endwhile()
 
 message(STATUS "Timing experiment: ${MAX_ITER} total conditions")
-
+message(STATUS "Timing experiment: building with ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
 
 set(cond 0)
