@@ -9,6 +9,8 @@ include(CTest)
 include(SetDefaultBuildType)
 set_default_build_type(RelWithDebInfo)
 
+option(BUILD_TIMING "Should we build the many timing executables?" off)
+
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/vendor/eigen-3.2.1")
 
 add_subdirectory(boundary_features)
@@ -19,3 +21,9 @@ if(BUILD_TESTING)
 
 	add_subdirectory(tests)
 endif()
+
+if(BUILD_TIMING)
+    add_subdirectory(timing)
+endif()
+
+
